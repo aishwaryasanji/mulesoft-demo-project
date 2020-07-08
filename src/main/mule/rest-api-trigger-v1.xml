@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="326237b2-f9b8-4015-ad3e-256e71f0d8b8" >
+		<http:listener-connection host="0.0.0.0" port="8098" />
+	</http:listener-config>
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="e3c31668-7fb5-4f84-a70f-98f2192962a6">
+		<http:request-connection host="reqres.in" port="80" />
+	</http:request-config>
+	<http:listener-config name="HTTP_Listener_config1" doc:name="HTTP Listener config" doc:id="527440d6-7e93-4eb3-8629-2e2845d5f106" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<file:config name="File_Config" doc:name="File Config" doc:id="78b51b11-62e0-4deb-b4cf-ed677eb3230e" >
+		<file:connection workingDir="C:\Users\AishwaryaSanji\AnypointStudio\practice-workspace\rest-api-trigger-v1\src\main\resources\outputfile" />
+	</file:config>
+	<flow name="rest-api-trigger-v1Flow" doc:id="aba60a75-2d67-466e-8851-cfa61038a3d9" >
+		<http:listener doc:name="/api/*" doc:id="94ef074c-089d-46ac-8d10-8cc79a6496e6" config-ref="HTTP_Listener_config1" path="/api/*"/>
+		<http:request method="GET" doc:name="Request" doc:id="3fedae6d-13a9-4bf5-9c83-fe36873174b7" config-ref="HTTP_Request_configuration" path="/api/users">
+			<http:query-params ><![CDATA[#[output application/java
+---
+{
+	"page" : "message.attributes.queryParams['page']"
+}]]]></http:query-params>
+		</http:request>
+		<ee:transform doc:name="Transform Message" doc:id="c2d0fcc7-b7a0-4dc3-bafd-f0234b0ef73e" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/xml
+---
+{
+	root: {
+		page: payload.page,
+		per_page: payload.per_page,
+		total: payload.total,
+		total_pages: payload.total_pages,
+		company: payload.ad.company,
+		url: payload.ad.url,
+		text: payload.ad.text,
+		(payload.data map ( datum , indexOfDatum ) -> {
+			data: {
+				id: datum.id,
+				email: datum.email,
+				first_name: datum.first_name,
+				last_name: datum.last_name,
+				avatar: datum.avatar
+			}
+		})
+	}
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<file:write doc:name="Write" doc:id="7e7d2e7a-4eb2-4563-988d-155baa033957" config-ref="File_Config" mode="CREATE_NEW" path='#["output.xml" ++ correlationId]'/>
+		<ee:transform doc:name="Transform Message" doc:id="7b5eccaf-4491-4145-929d-1613224becd7" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	message: "Success"
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

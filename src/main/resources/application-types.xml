@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<types:mule xmlns:types="http://www.mulesoft.org/schema/mule/types">
+  <types:catalog>
+    <types:type name="inputpayloadjson" format="json">
+      <types:shape format="weave" example="examples/input.json"><![CDATA[%dw 2.0
+
+type inputpayloadjson = {|
+  page: Number {"typeId": "int"}, 
+  per_page: Number {"typeId": "int"}, 
+  total: Number {"typeId": "int"}, 
+  total_pages: Number {"typeId": "int"}, 
+  data: Array<{|    id: Number {"typeId": "int"},     email: String,     first_name: String,     last_name: String,     avatar: String  |}>, 
+  ad: {|
+    company: String, 
+    url: String, 
+    text: String
+  |}
+|} {"example": "{\\\"page\\\":2,\\\"per_page\\\":6,\\\"total\\\":12,\\\"total_pages\\\":2,\\\"data\\\":[{\\\"id\\\":7,\\\"email\\\":\\\"michael.lawson@reqres.in\\\",\\\"first_name\\\":\\\"Michael\\\",\\\"last_name\\\":\\\"Lawson\\\",\\\"avatar\\\":\\\"https:\\/\\/s3.amazonaws.com\\/uifaces\\/faces\\/twitter\\/follettkyle\\/128.jpg\\\"},{\\\"id\\\":8,\\\"email\\\":\\\"lindsay.ferguson@reqres.in\\\",\\\"first_name\\\":\\\"Lindsay\\\",\\\"last_name\\\":\\\"Ferguson\\\",\\\"avatar\\\":\\\"https:\\/\\/s3.amazonaws.com\\/uifaces\\/faces\\/twitter\\/araa3185\\/128.jpg\\\"},{\\\"id\\\":9,\\\"email\\\":\\\"tobias.funke@reqres.in\\\",\\\"first_name\\\":\\\"Tobias\\\",\\\"last_name\\\":\\\"Funke\\\",\\\"avatar\\\":\\\"https:\\/\\/s3.amazonaws.com\\/uifaces\\/faces\\/twitter\\/vivekprvr\\/128.jpg\\\"},{\\\"id\\\":10,\\\"email\\\":\\\"byron.fields@reqres.in\\\",\\\"first_name\\\":\\\"Byron\\\",\\\"last_name\\\":\\\"Fields\\\",\\\"avatar\\\":\\\"https:\\/\\/s3.amazonaws.com\\/uifaces\\/faces\\/twitter\\/russoedu\\/128.jpg\\\"},{\\\"id\\\":11,\\\"email\\\":\\\"george.edwards@reqres.in\\\",\\\"first_name\\\":\\\"George\\\",\\\"last_name\\\":\\\"Edwards\\\",\\\"avatar\\\":\\\"https:\\/\\/s3.amazonaws.com\\/uifaces\\/faces\\/twitter\\/mrmoiree\\/128.jpg\\\"},{\\\"id\\\":12,\\\"email\\\":\\\"rachel.howell@reqres.in\\\",\\\"first_name\\\":\\\"Rachel\\\",\\\"last_name\\\":\\\"Howell\\\",\\\"avatar\\\":\\\"https:\\/\\/s3.amazonaws.com\\/uifaces\\/faces\\/twitter\\/hebertialmeida\\/128.jpg\\\"}],\\\"ad\\\":{\\\"company\\\":\\\"StatusCode Weekly\\\",\\\"url\\\":\\\"http:\\/\\/statuscode.org\\/\\\",\\\"text\\\":\\\"A weekly newsletter focusing on software development, infrastructure, the server, performance, and the stack end of things.\\\"}}"}
+
+]]></types:shape>
+    </types:type>
+    <types:type name="outputpayloadxml" format="xml">
+      <types:example format="xml" element="root" location="examples/outputdata.xml"/>
+    </types:type>
+  </types:catalog>
+  <types:enrichment select="#c2d0fcc7-b7a0-4dc3-bafd-f0234b0ef73e">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="inputpayloadjson"/>
+        </types:message>
+      </types:input-event>
+      <types:output-event>
+        <types:message>
+          <types:payload type="outputpayloadxml"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+</types:mule>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+  <page>2</page>
+  <per_page>6</per_page>
+  <total>12</total>
+  <total_pages>2</total_pages>
+  <data>
+    <id>7</id>
+    <email>michael.lawson@reqres.in</email>
+    <first_name>Michael</first_name>
+    <last_name>Lawson</last_name>
+    <avatar>https://s3.amazonaws.com/uifaces/faces/twitter/follettkyle/128.jpg</avatar>
+  </data>
+  <data>
+    <id>8</id>
+    <email>lindsay.ferguson@reqres.in</email>
+    <first_name>Lindsay</first_name>
+    <last_name>Ferguson</last_name>
+    <avatar>https://s3.amazonaws.com/uifaces/faces/twitter/araa3185/128.jpg</avatar>
+  </data>
+  <data>
+    <id>9</id>
+    <email>tobias.funke@reqres.in</email>
+    <first_name>Tobias</first_name>
+    <last_name>Funke</last_name>
+    <avatar>https://s3.amazonaws.com/uifaces/faces/twitter/vivekprvr/128.jpg</avatar>
+  </data>
+  <data>
+    <id>10</id>
+    <email>byron.fields@reqres.in</email>
+    <first_name>Byron</first_name>
+    <last_name>Fields</last_name>
+    <avatar>https://s3.amazonaws.com/uifaces/faces/twitter/russoedu/128.jpg</avatar>
+  </data>
+  <data>
+    <id>11</id>
+    <email>george.edwards@reqres.in</email>
+    <first_name>George</first_name>
+    <last_name>Edwards</last_name>
+    <avatar>https://s3.amazonaws.com/uifaces/faces/twitter/mrmoiree/128.jpg</avatar>
+  </data>
+  <data>
+    <id>12</id>
+    <email>rachel.howell@reqres.in</email>
+    <first_name>Rachel</first_name>
+    <last_name>Howell</last_name>
+    <avatar>https://s3.amazonaws.com/uifaces/faces/twitter/hebertialmeida/128.jpg</avatar>
+  </data>
+  <ad>
+    <company>StatusCode Weekly</company>
+    <url>http://statuscode.org/</url>
+    <text>A weekly newsletter focusing on software development, infrastructure, the server, performance, and the stack end of things.</text>
+  </ad>
+</root>
