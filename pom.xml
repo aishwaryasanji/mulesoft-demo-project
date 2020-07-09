@@ -36,7 +36,6 @@
                  <muleHome>${mule.home}</muleHome>
                  <applicationName>trigger-api-1</applicationName>
 				</standaloneDeployment>
-				</configuration>
 				<executions>
 				<execution>
 				<id>deploy</id>
@@ -46,6 +45,7 @@
 				</goals>
 				</execution>
 				</executions>
+				</configuration>
 			</plugin>
 		<plugin>
                 <groupId>com.mulesoft.munit.tools</groupId>
