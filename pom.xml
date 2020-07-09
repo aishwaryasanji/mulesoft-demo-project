@@ -37,16 +37,7 @@
                  <applicationName>trigger-api-1</applicationName>
                  <community>${mule.runtime.community}</community>
                  </configuration>
-				<executions>
-				<execution>
-				<id>deploy</id>
-				<phase>deploy</phase>
-				<goals>
-				<goal>deploy</goal>
-				</goals>
-				</execution>
-				</executions>
-			</plugin>
+            </plugin>
 		<plugin>
                 <groupId>com.mulesoft.munit.tools</groupId>
                 <artifactId>munit-maven-plugin</artifactId>
