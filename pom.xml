@@ -31,11 +31,12 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 			<configuration>
-				<standaloneDeployment>
+				 <deploymentType>standalone</deploymentType>
 				<muleVersion>4.3.0</muleVersion>
                  <muleHome>${mule.home}</muleHome>
                  <applicationName>trigger-api-1</applicationName>
-				</standaloneDeployment>
+                 <community>${mule.runtime.community}</community>
+                 </configuration>
 				<executions>
 				<execution>
 				<id>deploy</id>
@@ -45,7 +46,6 @@
 				</goals>
 				</execution>
 				</executions>
-				</configuration>
 			</plugin>
 		<plugin>
                 <groupId>com.mulesoft.munit.tools</groupId>
@@ -112,7 +112,6 @@
             <classifier>mule-plugin</classifier>
         </dependency>
     </dependencies>
-
 	<repositories>
           <repository>
             <id>anypoint-exchange-v2</id>
