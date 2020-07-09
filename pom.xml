@@ -45,8 +45,6 @@
 				</goals>
 				</execution>
 				</executions>
-				  <distributionManagement>
-         </distributionManagement>
 				</configuration>
 			</plugin>
 		<plugin>
