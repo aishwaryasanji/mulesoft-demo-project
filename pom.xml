@@ -35,7 +35,6 @@
 				<muleVersion>4.3.0</muleVersion>
                  <muleHome>${mule.home}</muleHome>
                  <applicationName>trigger-api-1</applicationName>
-                 <repository>D:\codecheckout</repository>
 				</standaloneDeployment>
 				</configuration>
 				<executions>
