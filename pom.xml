@@ -45,6 +45,13 @@
 				</goals>
 				</execution>
 				</executions>
+				  <distributionManagement>
+    <repository>
+      <id>internal.repo</id>
+      <name>muledemorepo</name>
+      <url>D:\codecheckout</url>
+    </repository>
+  </distributionManagement>
 				</configuration>
 			</plugin>
 		<plugin>
