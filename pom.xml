@@ -36,7 +36,23 @@
                  <muleHome>${mule.home}</muleHome>
                  <applicationName>trigger-api-1</applicationName>
                  <community>${mule.runtime.community}</community>
+<distributionManagement>
+	<repository>
+      <id>internal.repo</id>
+      <name>muledemorepo</name>
+      <url>D:\codecheckout</url>
+    </repository>
+</distributionManagement>
                  </configuration>
+                 <executions>
+				<execution>
+				<id>deploy</id>
+				<phase>deploy</phase>
+				<goals>
+				<goal>deploy</goal>
+				</goals>
+				</execution>
+				</executions>
             </plugin>
 		<plugin>
                 <groupId>com.mulesoft.munit.tools</groupId>
