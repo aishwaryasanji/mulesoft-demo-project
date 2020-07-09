@@ -31,12 +31,26 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 			<configuration>
-				<standaloneDeployment>
-                    <muleVersion>4.3.0</muleVersion>
-                    <muleHome>D:\MuleSoft\mule-ee-4.3.0\mule-ee-4.3.0\bin</muleHome>
-                    <applicationName>trigger-api-1</applicationName>       
-                </standaloneDeployment>
-			</configuration>
+				<cloudHubDeployment>
+				<uri>https://anypoint.mulesoft.com</uri>
+				<username>aishksanji</username>
+				<password>Chandler123@</password>
+				<environment>Sandbox</environment>
+				<workers>1</workers>
+				<workerType>Micro</workerType>
+				<applicationName>trigger-api-1</applicationName>
+				<muleVersion>4.3.0</muleVersion>
+				</cloudHubDeployment>
+				</configuration>
+				<executions>
+				<execution>
+				<id>deploy</id>
+				<phase>deploy</phase>
+				<goals>
+				<goal>deploy</goal>
+				</goals>
+				</execution>
+				</executions>
 			</plugin>
 		<plugin>
                 <groupId>com.mulesoft.munit.tools</groupId>
