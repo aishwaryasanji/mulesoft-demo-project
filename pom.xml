@@ -36,13 +36,13 @@
                  <muleHome>${mule.home}</muleHome>
                  <applicationName>trigger-api-1</applicationName>
                  <community>${mule.runtime.community}</community>
-<distributionManagement>
-	<repository>
-      <id>internal.repo</id>
-      <name>muledemorepo</name>
-      <url>D:\codecheckout</url>
-    </repository>
-</distributionManagement>
+			<distributionManagement>
+				<repository>
+			      <id>internal.repo</id>
+			      <name>muledemorepo</name>
+			      <url>D:\codecheckout\deploy</url>
+			    </repository>
+			</distributionManagement>
                  </configuration>
                  <executions>
 				<execution>
